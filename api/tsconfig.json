@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../tsconfig.base.json",
   "compilerOptions": {
     /***********************/
     /* BE AWARE: TARGET ES5 causes problems with instance of for base Classes like CustomHTTPError */
@@ -18,7 +18,7 @@
       "@/*": ["./*"]
     },
     "baseUrl": ".",
-    "typeRoots": ["./types", "../../node_modules/@", "../../node_modules/@types" ]
+    "typeRoots": ["./types", "../node_modules/@", "../node_modules/@types" ]
   },
   "include": ["src", "types"],
   "exclude": ["node_modules", "dist", "**/*.spec.ts"],

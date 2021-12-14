@@ -17,7 +17,11 @@
     "@babel/core": "^7.16.5",
     "@babel/node": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
+    "reflect-metadata": "^0.1.13",
+    "@types/source-map-support": "^0.5.3",
     "env-cmd": "^10.1.0",
+    "tsc-watch": "^4.5.0",
+    "source-map-support": "^0.5.21",
     "esbuild": "^0.13.2"
   }
 }
