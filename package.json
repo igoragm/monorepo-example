@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": [
     "apps/*",
-    "libs/*"
+    "libs/*",
+    "api/"
   ],
   "scripts": {
     "lerna:clean:install": "npx lerna clean --yes && rm -rf node_modules && npx lerna bootstrap --force-local"
@@ -16,6 +17,7 @@
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-typescript": "^7.16.5",
     "@babel/runtime": "^7.16.5",
+    "@types/babel__core": "^7.1.17",
     "@types/jest": "^27.0.3",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^27.4.5",
@@ -27,6 +29,8 @@
     "jest": "^27.4.5",
     "lerna": "^4.0.0",
     "prettier": "^2.5.1",
+    "source-map-support": "^0.5.21",
+    "tsc-watch": "^4.5.0",
     "typescript": "^4.5.4"
   },
   "prettier": {

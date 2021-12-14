@@ -1,5 +1,4 @@
-import React, { FC } from "react";
-import { render } from "react-dom";
+import React from "react";
 
 const TestComponent = () => {
     return <div>this is a teeest component</div>;
