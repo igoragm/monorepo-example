@@ -10,10 +10,34 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 process.env.NODE_ENV = "development";
 
+const moduleFileExtensions = [
+  "web.mjs",
+  "mjs",
+  "web.js",
+  "js",
+  "web.ts",
+  "ts",
+  "web.tsx",
+  "tsx",
+  "json",
+  "web.jsx",
+  "jsx"
+];
+
 module.exports = {
   entry: "/src/index.js",
-  output: { path: path.resolve(__dirname, "dist") },
+  output: { 
+    path: path.resolve(__dirname, "dist"),
+    publicPath: "",
+    filename: "bundle-[hash].js"
+  },
   mode: 'development',
+  resolve: {
+    extensions: moduleFileExtensions.map(ext => `.${ext}`).filter(ext => !ext.includes("ts"))
+  },
+  devServer: {
+    historyApiFallback: true,
+  },
   module: {
     rules: [
       // Disable require.ensure as it's not a standard language feature.

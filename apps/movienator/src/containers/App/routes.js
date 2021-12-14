@@ -1,21 +1,20 @@
-import LandingPage from "../../pages/LandingPage";
+import TestComponent from "../../components/TestComponent";
 
 const title = "Movienator";
 
 const routes = [
-    // Root
     {
         path: "/",
         title: `Welcome to | ${title}`,
-        page: LandingPage,
+        page: TestComponent,
         exact: true
     },
 
-    // 404
-    {
-        title: `404 | ${title}`,
-        page: NotFoundPage
-    }
+    // // 404
+    // {
+    //     title: `404 | ${title}`,
+    //     page: NotFoundPage
+    // }
 ];
 
 export default routes;
