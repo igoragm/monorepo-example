@@ -1,4 +1,3 @@
-
 import LandingPage from "../../pages/LandingPage";
 
 const title = "Movienator";
@@ -9,14 +8,13 @@ const routes = [
         path: "/",
         title: `Welcome to | ${title}`,
         page: LandingPage,
-         exact: true
+        exact: true
     },
 
     // 404
-    { 
-        
+    {
         title: `404 | ${title}`,
-         page: NotFoundPage
+        page: NotFoundPage
     }
 ];
 

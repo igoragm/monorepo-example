@@ -5,9 +5,7 @@ interface ButtonState {
 }
 
 const test = () => {
-    <div>
-        this is a teeest component
-    </div>
-}
+    <div>this is a teeest component</div>;
+};
 
 export default test;
