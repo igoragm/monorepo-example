@@ -1,0 +1,7 @@
+.idea/
+.cache/
+node_modules/
+public/
+generated/
+coverage/
+dist/

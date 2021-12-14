@@ -1,6 +1,13 @@
 
 const path = require("path");
+const fs = require("fs");
+const resolve = require("resolve");
+const configDir = fs.realpathSync(__dirname);
+const appDirectory = path.resolve(configDir, "../");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpackPlugin");
+const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+
 process.env.NODE_ENV = "development";
 
 module.exports = {
@@ -9,6 +16,29 @@ module.exports = {
   mode: 'development',
   module: {
     rules: [
+      // Disable require.ensure as it's not a standard language feature.
+      { parser: { requireEnsure: false } },
+
+      // First, run the linter.
+      // It's important to do this before Babel processes the JS.
+      {
+          test: /\.(js|mjs|jsx|ts|tsx)$/,
+          enforce: "pre",
+          use: [
+              {
+                  options: {
+                      cache: true,
+                      formatter: require.resolve("react-dev-utils/eslintFormatter"),
+                      eslintPath: require.resolve("eslint"),
+                      resolvePluginsRelativeTo: __dirname,
+                      configFile: resolveApp("./movienator/.eslintrc.js")
+                  },
+                  loader: require.resolve("eslint-loader")
+              }
+          ],
+          exclude: [/\.(ejs)$/],
+          include: resolveApp("src")
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -45,5 +75,20 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
     }),
+    new ForkTsCheckerWebpackPlugin({
+      typescript: resolve.sync("typescript", {
+          basedir: resolveApp("node_modules")
+      }),
+      async: true,
+      useTypescriptIncrementalApi: true,
+      checkSyntacticErrors: true,
+      tsconfig: resolveApp("./movienator/tsconfig.json"),
+      reportFiles: [
+          "**",
+          "!**/__tests__/**",
+          "!**/?(*.)(spec|test).*"
+      ],
+      silent: true
+  })
   ],
 };

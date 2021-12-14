@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@monorepo/*": ["libs/*/src"]
+        },
+        "noImplicitAny": true,
+        "skipLibCheck": true,
+        "downlevelIteration": true
+    }
+}
