@@ -2,7 +2,7 @@ const path = require("path");
 const fs = require("fs");
 const resolve = require("resolve");
 const configDir = fs.realpathSync(__dirname);
-const appDirectory = path.resolve(configDir, "../");
+const appDirectory = path.resolve(configDir, ".");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpackPlugin");
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
@@ -24,7 +24,7 @@ const moduleFileExtensions = [
 ];
 
 module.exports = {
-    entry: "/src/index.js",
+    entry: "./src/index.js",
     output: {
         path: path.resolve(__dirname, "dist"),
         publicPath: "",
@@ -32,7 +32,7 @@ module.exports = {
     },
     mode: "development",
     resolve: {
-        extensions: moduleFileExtensions.map(ext => `.${ext}`).filter(ext => !ext.includes("ts"))
+        extensions: [".js", ".json", ".ts", ".tsx"]
     },
     devServer: {
         historyApiFallback: true
@@ -54,7 +54,7 @@ module.exports = {
                             formatter: require.resolve("react-dev-utils/eslintFormatter"),
                             eslintPath: require.resolve("eslint"),
                             resolvePluginsRelativeTo: __dirname,
-                            configFile: resolveApp("./movienator/.eslintrc.js")
+                            configFile: resolveApp(".eslintrc.js")
                         },
                         loader: require.resolve("eslint-loader")
                     }
@@ -91,6 +91,20 @@ module.exports = {
                         compact: false
                     }
                 }
+            },
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: "ts-loader",
+                        options: {
+                            transpileOnly: true,
+                            happyPackMode: true,
+                            configFile: resolveApp("tsconfig.json")
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -105,7 +119,7 @@ module.exports = {
             async: true,
             useTypescriptIncrementalApi: true,
             checkSyntacticErrors: true,
-            tsconfig: resolveApp("./movienator/tsconfig.json"),
+            tsconfig: resolveApp("tsconfig.json"),
             reportFiles: ["**", "!**/__tests__/**", "!**/?(*.)(spec|test).*"],
             silent: true
         })

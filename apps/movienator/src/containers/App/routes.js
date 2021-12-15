@@ -8,7 +8,7 @@ const routes = [
         title: `Welcome to | ${title}`,
         page: TestComponent,
         exact: true
-    },
+    }
 
     // // 404
     // {

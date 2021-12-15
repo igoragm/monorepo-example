@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --hot",
+    "start": "webpack serve --hot --port '4000'",
     "lint": "eslint ./src --ext .ts,.tsx,.js,.mjs,.jsx",
     "lint:fix": "eslint ./src --fix"
   },
