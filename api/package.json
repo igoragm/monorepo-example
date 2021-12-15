@@ -25,5 +25,11 @@
     "tsc-watch": "^4.5.0",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.0"
+  },
+  "prettier": {
+    "tabWidth": 4,
+    "printWidth": 120,
+    "arrowParens": "avoid",
+    "trailingComma": "none"
   }
 }

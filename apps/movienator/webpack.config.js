@@ -9,20 +9,6 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 process.env.NODE_ENV = "development";
 
-const moduleFileExtensions = [
-    "web.mjs",
-    "mjs",
-    "web.js",
-    "js",
-    "web.ts",
-    "ts",
-    "web.tsx",
-    "tsx",
-    "json",
-    "web.jsx",
-    "jsx"
-];
-
 module.exports = {
     entry: "./src/index.js",
     output: {
