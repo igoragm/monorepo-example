@@ -1,4 +1,6 @@
 import express, { Application, Router, Request, Response, NextFunction } from "express";
+import { getMovies } from "../api/moviesApi";
+// import { moviesService } from "../services";
 import config from "../services/config";
 
 function wrapAsync(fn: (req: Request, res: Response, next: NextFunction) => Promise<unknown>) {
@@ -15,7 +17,5 @@ export default (expressApp: Application): void => {
 };
 
 const initLandingPage = (router: Router) => {
-    router.get("/express_backend", (req, res) => {
-        res.send({ express: "YOUR EXPRESS BACKEND IS CONNECTED TO REACT" });
-    });
+    router.get("/express_backend", wrapAsync(getMovies));
 };

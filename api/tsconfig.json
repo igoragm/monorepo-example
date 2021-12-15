@@ -18,7 +18,8 @@
       "@/*": ["./*"]
     },
     "baseUrl": ".",
-    "typeRoots": ["./types", "../node_modules/@", "../node_modules/@types" ]
+    "typeRoots": ["./types", "../node_modules/@", "../node_modules/@types" ],
+    "experimentalDecorators": true,
   },
   "include": ["src", "types"],
   "exclude": ["node_modules", "dist", "**/*.spec.ts"],
