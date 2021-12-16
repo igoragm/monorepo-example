@@ -1,10 +1,10 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { getMovies } from "../../store/actions/movies.actions";
+import { getCharacters } from "../../store/actions/characters.actions";
 import { Table } from "antd";
 
-const mapDispatchToProps = { getMovies };
-const mapStateToProps = ({ movies }) => ({ moviesList: movies.movies });
+const mapDispatchToProps = { getCharacters };
+const mapStateToProps = ({ characters }) => ({ charactersList: characters.characters });
 
 const columns = [
     {
@@ -24,15 +24,15 @@ const columns = [
     }
 ];
 
-class Movies extends React.Component<any, any> {
+class Characters extends React.Component<any, any> {
     state = {
-        moviesList: [] as any
+        charactersList: [] as any
     };
 
     async componentDidMount() {
-        await this.props.getMovies();
-        const { moviesList } = this.props;
-        const data = moviesList.data.map(character => {
+        await this.props.getCharacters();
+        const { charactersList } = this.props;
+        const data = charactersList.data.map(character => {
             return {
                 key: character.id,
                 family: character.family,
@@ -40,7 +40,7 @@ class Movies extends React.Component<any, any> {
                 title: character.title
             };
         });
-        this.setState({ moviesList: data });
+        this.setState({ charactersList: data });
     }
 
     render() {
@@ -58,11 +58,11 @@ class Movies extends React.Component<any, any> {
                         };
                     }}
                     columns={columns}
-                    dataSource={this.state.moviesList}
+                    dataSource={this.state.charactersList}
                 />
             </div>
         );
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Movies);
+export default connect(mapStateToProps, mapDispatchToProps)(Characters);

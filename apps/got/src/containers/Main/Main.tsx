@@ -1,17 +1,17 @@
 import * as React from "react";
-import Movies from "../../components/movies/Movies";
+import Characters from "../../components/characters/Characters";
 import MainLayout from "../../components/layout/MainLayout";
-import MovieDetail from "../../components/movieDetail/MovieDetail";
+import CharacterDetail from "../../components/characterDetail/CharacterDetail";
 import styles from "./Main.module.scss";
 
 export default function Main() {
     return (
         <MainLayout>
             <div className={styles.left}>
-                <Movies />
+                <Characters />
             </div>
             <div className={styles.right}>
-                <MovieDetail />
+                <CharacterDetail />
             </div>
         </MainLayout>
     );

@@ -1,13 +1,13 @@
 import { combineReducers, createStore, applyMiddleware } from "redux";
 import { connectRouter } from "connected-react-router";
 import promiseMiddleware from "redux-promise-middleware";
-import { movies } from "./reducers/movies.reducer";
+import { characters } from "./reducers/characters.reducer";
 import { createBrowserHistory } from "history";
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
-    movies: movies,
+    characters: characters,
     router: connectRouter(history)
 });
 

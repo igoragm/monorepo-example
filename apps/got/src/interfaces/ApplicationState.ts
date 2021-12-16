@@ -4,6 +4,6 @@ export interface IReduxPromiseState {
     status?: number;
 }
 
-export interface IMoviesState extends IReduxPromiseState {
-    movies: any;
+export interface ICharactersState extends IReduxPromiseState {
+    characters: any;
 }

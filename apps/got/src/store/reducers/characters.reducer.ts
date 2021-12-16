@@ -1,47 +1,51 @@
 import { FluxStandardAction } from "redux-promise-middleware";
-import { GET_MOVIES_FULFILLED, GET_MOVIES_PENDING, GET_MOVIES_REJECTED } from "../actions/movies.actions";
+import {
+    GET_CHARACTERS_PENDING,
+    GET_CHARACTERS_FULFILLED,
+    GET_CHARACTERS_REJECTED
+} from "../actions/characters.actions";
 
 const initialState = {
-    movies: {
+    characters: {
         isFetching: false,
         failed: false,
         data: []
     }
 };
 
-export function movies(state = initialState, action: FluxStandardAction) {
+export function characters(state = initialState, action: FluxStandardAction) {
     console.log("ACTION TYPE", action);
     switch (action.type) {
-        case GET_MOVIES_PENDING:
-            console.log("ACTION TYPE GET_MOVIES_PENDING", action);
+        case GET_CHARACTERS_PENDING:
+            console.log("ACTION TYPE GET_CHARACTERS_PENDING", action);
             return {
                 ...state,
-                movies: {
-                    ...state.movies,
+                characters: {
+                    ...state.characters,
                     isFetching: true,
-                    data: [...state.movies.data]
+                    data: [...state.characters.data]
                 }
             };
 
-        case GET_MOVIES_REJECTED:
-            console.log("ACTION TYPE GET_MOVIES_REJECTED", action);
+        case GET_CHARACTERS_REJECTED:
+            console.log("ACTION TYPE GET_CHARACTERS_REJECTED", action);
             return {
                 ...state,
-                movies: {
-                    ...state.movies,
+                characters: {
+                    ...state.characters,
                     status: action.payload.status,
                     isFetching: false,
                     failed: true,
-                    data: [...state.movies.data]
+                    data: [...state.characters.data]
                 }
             };
 
-        case GET_MOVIES_FULFILLED:
-            console.log("ACTION TYPE GET_MOVIES_FULFILLED", action);
+        case GET_CHARACTERS_FULFILLED:
+            console.log("ACTION TYPE GET_CHARACTERS_FULFILLED", action);
             return {
                 ...state,
-                movies: {
-                    ...state.movies,
+                characters: {
+                    ...state.characters,
                     isFetching: false,
                     failed: false,
                     status: action.payload.status,
