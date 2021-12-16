@@ -10,8 +10,6 @@ On the structure:
 
 -   I've decided to go with a small server running as a proxy between the React app and the external API (anapioficeandfire.com). I find this to be a good approach when I'm communicating with 3rd party API's and I like the overall structure as it's nicely separated and the frontend remains clutter free.
 
--   Install Lerna as a dev dependency, at repo root level: yarn add --dev lerna
-
 -   In the root of the repository execute 'yarn lerna:clean:install' and after that:
 
     Root api/:
