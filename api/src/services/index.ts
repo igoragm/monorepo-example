@@ -1,9 +1,9 @@
-import { MoviesRepository } from "../use_cases/movies/repositories/moviesRepository";
-import { MoviesService } from "./movieService";
+import { CharactersRepository } from "../use_cases/characters/repositories/charactersRepository";
+import { CharactersService } from "./charactersService";
 import { BaseService } from "./baseService";
 
 const baseService = new BaseService();
 
-const moviesService: MoviesRepository = new MoviesService(baseService);
+const charactersService: CharactersRepository = new CharactersService(baseService);
 
-export { moviesService };
+export { charactersService };

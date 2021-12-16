@@ -1,6 +1,6 @@
-import { makeFetchMovies } from "./movies/fetchMovies";
-import { moviesService } from "../services";
+import { makeFetchCharacters } from "./characters/fetchCharacters";
+import { charactersService } from "../services";
 
-const fetchMovies = makeFetchMovies(moviesService);
+const fetchCharacters = makeFetchCharacters(charactersService);
 
-export { fetchMovies };
+export { fetchCharacters };

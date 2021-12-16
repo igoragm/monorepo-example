@@ -1,7 +1,7 @@
 import BaseService from "./BaseService";
 
 const endpoints = {
-    movies: "/movies"
+    movies: "/characters"
 };
 
 export default class MacherService extends BaseService<typeof endpoints> {

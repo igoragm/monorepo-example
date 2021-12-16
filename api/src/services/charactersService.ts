@@ -1,12 +1,12 @@
-import { MoviesRepository } from "../use_cases/movies/repositories/moviesRepository";
+import { CharactersRepository } from "../use_cases/characters/repositories/charactersRepository";
 import { ExternalService } from "../utils/externalService";
 
-export class MoviesService implements MoviesRepository {
+export class CharactersService implements CharactersRepository {
     constructor(private externalService: ExternalService) {
-        console.log("movies service external api", this.externalService);
+        console.log("characters service external api", this.externalService);
     }
 
-    public async fetchMovies() {
+    public async fetchCharacters() {
         const url = "https://thronesapi.com/api/v2/Characters";
         const response = await this.externalService.get(url);
         return response as any;

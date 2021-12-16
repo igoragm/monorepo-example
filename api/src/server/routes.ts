@@ -1,6 +1,5 @@
 import express, { Application, Router, Request, Response, NextFunction } from "express";
-import { getMovies } from "../api/moviesApi";
-// import { moviesService } from "../services";
+import { getCharacters } from "../api/charactersApi";
 import config from "../services/config";
 
 function wrapAsync(fn: (req: Request, res: Response, next: NextFunction) => Promise<unknown>) {
@@ -17,5 +16,5 @@ export default (expressApp: Application): void => {
 };
 
 const initLandingPage = (router: Router) => {
-    router.get("/movies", wrapAsync(getMovies));
+    router.get("/characters", wrapAsync(getCharacters));
 };
