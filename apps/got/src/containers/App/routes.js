@@ -1,6 +1,6 @@
 import Main from "../Main/Main";
 
-const title = "Movienator";
+const title = "got";
 
 const routes = [
     {

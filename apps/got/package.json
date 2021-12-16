@@ -1,5 +1,5 @@
 {
-  "name": "monorepo-movienator",
+  "name": "monorepo-got",
   "version": "0.0.1",
   "main": "index.js",
   "sideEffects": [
