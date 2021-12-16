@@ -5,6 +5,7 @@ const configDir = fs.realpathSync(__dirname);
 const appDirectory = path.resolve(configDir, ".");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpackPlugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 process.env.NODE_ENV = "development";
@@ -23,11 +24,30 @@ module.exports = {
     devServer: {
         historyApiFallback: true
     },
+    plugins: [
+        new HtmlWebPackPlugin({
+            template: "./src/index.html"
+        }),
+        new ForkTsCheckerWebpackPlugin({
+            typescript: resolve.sync("typescript", {
+                basedir: resolveApp("node_modules")
+            }),
+            async: true,
+            useTypescriptIncrementalApi: true,
+            checkSyntacticErrors: true,
+            tsconfig: resolveApp("tsconfig.json"),
+            reportFiles: ["**", "!**/__tests__/**", "!**/?(*.)(spec|test).*"],
+            silent: true
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].[hash].css",
+            chunkFilename: "[id].[hash].css"
+        })
+    ],
     module: {
         rules: [
             // Disable require.ensure as it's not a standard language feature.
             { parser: { requireEnsure: false } },
-
             // First, run the linter.
             // It's important to do this before Babel processes the JS.
             {
@@ -91,23 +111,27 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader
+                    },
+                    {
+                        loader: "css-loader"
+                    },
+                    {
+                        loader: "postcss-loader"
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            implementation: require("sass")
+                        }
+                    }
+                ]
             }
         ]
-    },
-    plugins: [
-        new HtmlWebPackPlugin({
-            template: "./src/index.html"
-        }),
-        new ForkTsCheckerWebpackPlugin({
-            typescript: resolve.sync("typescript", {
-                basedir: resolveApp("node_modules")
-            }),
-            async: true,
-            useTypescriptIncrementalApi: true,
-            checkSyntacticErrors: true,
-            tsconfig: resolveApp("tsconfig.json"),
-            reportFiles: ["**", "!**/__tests__/**", "!**/?(*.)(spec|test).*"],
-            silent: true
-        })
-    ]
+    }
 };

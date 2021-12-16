@@ -5,5 +5,5 @@ export interface IReduxPromiseState {
 }
 
 export interface IMoviesState extends IReduxPromiseState {
-    list: any;
+    movies: any;
 }

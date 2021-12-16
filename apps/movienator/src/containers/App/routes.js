@@ -1,4 +1,4 @@
-import TestComponent from "../../components/TestComponent";
+import Main from "../Main/Main";
 
 const title = "Movienator";
 
@@ -6,7 +6,7 @@ const routes = [
     {
         path: "/",
         title: `Welcome to | ${title}`,
-        page: TestComponent,
+        page: Main,
         exact: true
     }
 

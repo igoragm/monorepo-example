@@ -1,38 +1,56 @@
-import { IMoviesState } from "../../interfaces/ApplicationState";
 import { FluxStandardAction } from "redux-promise-middleware";
 import { GET_MOVIES_FULFILLED, GET_MOVIES_PENDING, GET_MOVIES_REJECTED } from "../actions/movies.actions";
 
-const initialState: IMoviesState = {
-    isFetching: false,
-    failed: false,
-    list: []
+const initialState = {
+    movies: {
+        isFetching: false,
+        failed: false,
+        data: []
+    }
 };
 
-export function movies(state = initialState, action: FluxStandardAction): IMoviesState {
+export function movies(state = initialState, action: FluxStandardAction) {
+    console.log("ACTION TYPE", action);
     switch (action.type) {
         case GET_MOVIES_PENDING:
+            console.log("ACTION TYPE GET_MOVIES_PENDING", action);
             return {
                 ...state,
-                isFetching: true
+                movies: {
+                    ...state.movies,
+                    isFetching: true,
+                    data: [...state.movies.data]
+                }
             };
 
         case GET_MOVIES_REJECTED:
+            console.log("ACTION TYPE GET_MOVIES_REJECTED", action);
             return {
                 ...state,
-                status: action.payload.response.status,
-                isFetching: false,
-                failed: true
+                movies: {
+                    ...state.movies,
+                    status: action.payload.status,
+                    isFetching: false,
+                    failed: true,
+                    data: [...state.movies.data]
+                }
             };
 
         case GET_MOVIES_FULFILLED:
+            console.log("ACTION TYPE GET_MOVIES_FULFILLED", action);
             return {
-                list: action.payload.data,
-                status: action.payload.status,
-                isFetching: false,
-                failed: false
+                ...state,
+                movies: {
+                    ...state.movies,
+                    isFetching: false,
+                    failed: false,
+                    status: action.payload.status,
+                    data: [...action.payload.data]
+                }
             };
 
         default:
+            console.log("ACTION TYPE DEFAULT", action.payload);
             return state;
     }
 }

@@ -1,8 +1,9 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import routes from "./routes";
+import "antd/dist/antd.css";
 
-export default class App extends PureComponent {
+export default class App extends Component {
     render() {
         return (
             <Switch>

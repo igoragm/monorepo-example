@@ -17,5 +17,5 @@ export default (expressApp: Application): void => {
 };
 
 const initLandingPage = (router: Router) => {
-    router.get("/express_backend", wrapAsync(getMovies));
+    router.get("/movies", wrapAsync(getMovies));
 };

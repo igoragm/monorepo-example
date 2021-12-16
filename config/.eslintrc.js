@@ -14,7 +14,6 @@ module.exports = {
         "import/no-anonymous-default-export": "off",
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
-        "@typescript-eslint/no-unused-vars": ["warn", { args: "none", ignoreRestSiblings: true }],
         "jsx-a11y/heading-has-content": "off",
         "jsx-a11y/anchor-has-content": "off",
         "prettier/prettier": "error",
