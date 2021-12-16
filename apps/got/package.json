@@ -6,7 +6,7 @@
     "*.css"
   ],
   "scripts": {
-    "start": "webpack serve --hot --port '4000'",
+    "dev": "webpack serve --hot --port '4000'",
     "lint": "eslint ./src --ext .ts,.tsx,.js,.mjs,.jsx",
     "lint:fix": "eslint ./src --fix"
   },

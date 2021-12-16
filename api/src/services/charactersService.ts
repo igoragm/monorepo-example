@@ -2,9 +2,7 @@ import { CharactersRepository } from "../use_cases/characters/repositories/chara
 import { ExternalService } from "../utils/externalService";
 
 export class CharactersService implements CharactersRepository {
-    constructor(private externalService: ExternalService) {
-        console.log("characters service external api", this.externalService);
-    }
+    constructor(private externalService: ExternalService) {}
 
     public async fetchCharacters() {
         const url = "https://thronesapi.com/api/v2/Characters";

@@ -8,7 +8,6 @@ export class BaseService implements ExternalService {
      *
      */
     constructor() {
-        console.log("starting base service");
         this.axios = axios.create();
     }
 
