@@ -14,14 +14,13 @@ export default abstract class Service<Endpoints extends ServiceEndpoints> {
     }
 
     constructor() {
-        console.log("starting base service");
         this.axios = axiosApi;
     }
 
-    public get(servicePath: string, params: AxiosRequestConfig = {}): Promise<Record<string, unknown>> {
+    public get(servicePath: string, params = {}): Promise<Record<string, unknown>> {
         return new Promise(async (resolve, reject) => {
             try {
-                const response = await this.axios.get(servicePath, params);
+                const response = await this.axios.get(servicePath, { params });
                 resolve(response.data);
             } catch (e) {
                 reject(e);

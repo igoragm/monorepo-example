@@ -1,13 +1,14 @@
 import { combineReducers, createStore, applyMiddleware } from "redux";
 import { connectRouter } from "connected-react-router";
 import promiseMiddleware from "redux-promise-middleware";
-import { characters } from "./reducers/characters.reducer";
+import { characters, characterDetails } from "./reducers/characters.reducer";
 import { createBrowserHistory } from "history";
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
-    characters: characters,
+    characters,
+    characterDetails,
     router: connectRouter(history)
 });
 

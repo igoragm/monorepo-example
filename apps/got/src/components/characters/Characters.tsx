@@ -1,22 +1,22 @@
 import * as React from "react";
 import { Table } from "antd";
 
-export type CharactersProps = { charactersList: any; columns: Record<string, unknown> };
+export type CharactersProps = { charactersList: any; columns: Record<string, unknown>; baseEventHandler: Function };
 
 export class Characters extends React.Component<CharactersProps> {
     render() {
-        const { charactersList, columns } = this.props;
+        const { charactersList, columns, baseEventHandler } = this.props;
 
         return (
             <div>
                 <Table
-                    onRow={(record, rowIndex) => {
+                    onRow={(record: any) => {
                         return {
                             onClick: event => {
-                                console.log(record);
-                                // implement api for
-                                // https://thronesapi.com/api/v2/Characters/${record.id}
-                                // update character details store (upcoming)
+                                event.preventDefault();
+                                if (baseEventHandler) {
+                                    baseEventHandler(record);
+                                }
                             }
                         };
                     }}

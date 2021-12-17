@@ -1,8 +1,28 @@
 import * as React from "react";
-import styles from "./CharacterDetail.module.scss";
 
-export default class CharacterDetail extends React.Component<any, any> {
+export type CharactersProps = { characterDetails: any };
+
+export default class CharacterDetail extends React.Component<CharactersProps, any> {
     render() {
-        return <div className={styles.test}>character details</div>;
+        const { characterDetails } = this.props;
+        return (
+            <div>
+                <h2>Character info</h2>
+                {characterDetails ? (
+                    <div>
+                        <img alt="" src={characterDetails.imageUrl} />
+                        <p>
+                            {characterDetails.title}: {characterDetails.fullName} of {characterDetails.family}
+                        </p>
+                        <div>
+                            <p>"{characterDetails.quote}"</p>
+                            <p>
+                                - {characterDetails.title}, {characterDetails.fullName}
+                            </p>
+                        </div>
+                    </div>
+                ) : null}
+            </div>
+        );
     }
 }

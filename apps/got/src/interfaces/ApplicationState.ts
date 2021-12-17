@@ -6,4 +6,5 @@ export interface IReduxPromiseState {
 
 export interface ICharactersState extends IReduxPromiseState {
     characters: any;
+    characterDetails: any;
 }

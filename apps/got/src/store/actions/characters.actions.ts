@@ -9,3 +9,14 @@ export const getCharacters = params => ({
     payload: charactersService.getCharacters(params),
     meta: params
 });
+
+export const GET_CHARACTER_DETAILS = "GET_CHARACTER_DETAILS";
+export const GET_CHARACTER_DETAILS_PENDING = "GET_CHARACTER_DETAILS_PENDING";
+export const GET_CHARACTER_DETAILS_FULFILLED = "GET_CHARACTER_DETAILS_FULFILLED";
+export const GET_CHARACTER_DETAILS_REJECTED = "GET_CHARACTER_DETAILS_REJECTED";
+
+export const getCharacterDetails = params => ({
+    type: GET_CHARACTER_DETAILS,
+    payload: charactersService.getCharacterDetails(params),
+    meta: params
+});

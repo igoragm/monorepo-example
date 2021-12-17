@@ -4,10 +4,10 @@ import MainLayout from "../../components/layout/MainLayout";
 import CharacterDetail from "../../components/characterDetail/CharacterDetail";
 import styles from "./Main.module.scss";
 import { connect } from "react-redux";
-import { getCharacters } from "../../store/actions/characters.actions";
+import { getCharacters, getCharacterDetails } from "../../store/actions/characters.actions";
 
-const mapDispatchToProps = { getCharacters };
-const mapStateToProps = ({ characters }) => ({ charactersList: characters.characters });
+const mapDispatchToProps = { getCharacters, getCharacterDetails };
+const mapStateToProps = ({ characters, characterDetails }) => ({ charactersList: characters, characterDetails });
 
 const columns = [
     {
@@ -29,8 +29,19 @@ const columns = [
 
 class Main extends React.Component<any, any> {
     state = {
-        charactersList: [] as any
+        charactersList: [] as any,
+        characterDetails: undefined,
+        selectedCharacter: ""
     };
+
+    async rowClick(record: any) {
+        if (record.key === this.state.selectedCharacter) {
+            return;
+        }
+        await this.props.getCharacterDetails(record.key);
+        const { characterDetails } = this.props;
+        this.setState({ characterDetails: characterDetails.data, selectedCharacter: record.key });
+    }
 
     async componentDidMount() {
         await this.props.getCharacters();
@@ -50,10 +61,14 @@ class Main extends React.Component<any, any> {
         return (
             <MainLayout>
                 <div className={styles.left}>
-                    <Characters charactersList={this.state.charactersList} columns={columns} />
+                    <Characters
+                        charactersList={this.state.charactersList}
+                        columns={columns}
+                        baseEventHandler={this.rowClick.bind(this)}
+                    />
                 </div>
                 <div className={styles.right}>
-                    <CharacterDetail />
+                    <CharacterDetail characterDetails={this.state.characterDetails} />
                 </div>
             </MainLayout>
         );

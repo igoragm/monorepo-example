@@ -7,3 +7,10 @@ export const makeFetchCharacters = (charactersService: CharactersRepository) => 
         return characters;
     };
 };
+
+export const makeFetchCharacterDetails = (charactersService: CharactersRepository) => {
+    return async (id: string): Promise<Character> => {
+        const character = await charactersService.fetchCharacterDetails(id);
+        return character;
+    };
+};
