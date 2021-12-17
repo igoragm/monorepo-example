@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "clear": "rm -rf ./dist",
-    "dev": "npx env-cmd -f ./env-config/.env --use-shell 'yarn run clear && tsc-watch --onSuccess \"node --inspect --trace-warnings ./dist/index.js\"'"
+    "dev": "npx env-cmd -f ./env-config/.env --use-shell 'yarn run clear && tsc-watch --onSuccess \"node --inspect --trace-warnings ./dist/index.js\"'",
+    "test": "npx jest --verbose"
   },
   "dependencies": {
     "@babel/cli": "^7.16.0",
@@ -21,7 +22,10 @@
     "cors": "^2.8.5",
     "env-cmd": "^10.1.0",
     "esbuild": "^0.13.2",
+    "esbuild-jest": "^0.5.0",
     "express": "^4.17.1",
+    "jest": "^27.4.5",
+    "regenerator-runtime": "^0.13.9",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.21",
     "tsc-watch": "^4.5.0",
