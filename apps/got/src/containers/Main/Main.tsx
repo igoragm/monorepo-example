@@ -16,19 +16,19 @@ const columns = [
     {
         title: "Family",
         dataIndex: "family",
-        sorter: (a: { family: string }, b: { family: any }) => a.family.localeCompare(b.family),
+        sorter: (a: { family: string }, b: { family: string }) => a.family.localeCompare(b.family),
         sortDirections: ["descend", "ascend"]
     },
     {
         title: "Name",
         dataIndex: "fullName",
-        sorter: (a: { fullName: string }, b: { fullName: any }) => a.fullName > b.fullName,
+        sorter: (a: { fullName: string }, b: { fullName: string }) => a.fullName > b.fullName,
         sortDirections: ["descend", "ascend"]
     },
     {
         title: "Title",
         dataIndex: "title",
-        sorter: (a: { title: string }, b: { title: any }) => a.title.localeCompare(b.title),
+        sorter: (a: { title: string }, b: { title: string }) => a.title.localeCompare(b.title),
         sortDirections: ["descend", "ascend"]
     }
 ];
