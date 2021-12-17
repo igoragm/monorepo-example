@@ -5,7 +5,7 @@ import { SearchOutlined } from "@ant-design/icons";
 
 export type CharactersProps = {
     charactersList: any;
-    columns: Record<string, unknown>;
+    columns: Object[];
     baseEventHandler: Function;
 };
 
@@ -15,16 +15,18 @@ export class Characters extends React.Component<CharactersProps> {
         searchedColumn: ""
     };
 
-    getColumnSearchProps = dataIndex => ({
+    getColumnSearchProps = (dataIndex: string) => ({
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
             <div style={{ padding: 8 }}>
                 <Input
-                    ref={node => {
+                    ref={(node: any) => {
                         this.searchInput = node;
                     }}
                     placeholder={`Search ${dataIndex}`}
                     value={selectedKeys[0]}
-                    onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+                    onChange={(e: { target: { value: any } }) =>
+                        setSelectedKeys(e.target.value ? [e.target.value] : [])
+                    }
                     onPressEnter={() => this.handleSearch(selectedKeys, confirm, dataIndex)}
                     style={{ marginBottom: 8, display: "block" }}
                 />
@@ -57,15 +59,15 @@ export class Characters extends React.Component<CharactersProps> {
                 </Space>
             </div>
         ),
-        filterIcon: filtered => <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />,
-        onFilter: (value, record) =>
+        filterIcon: (filtered: any) => <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />,
+        onFilter: (value: string, record: { [x: string]: { toString: () => string } }) =>
             record[dataIndex] ? record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()) : "",
-        onFilterDropdownVisibleChange: visible => {
+        onFilterDropdownVisibleChange: (visible: any) => {
             if (visible) {
                 setTimeout(() => this.searchInput.select(), 100);
             }
         },
-        render: text =>
+        render: (text: { toString: () => any }) =>
             this.state.searchedColumn === dataIndex ? (
                 <Highlighter
                     highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
@@ -78,7 +80,7 @@ export class Characters extends React.Component<CharactersProps> {
             )
     });
 
-    handleSearch = (selectedKeys, confirm, dataIndex) => {
+    handleSearch = (selectedKeys: any[], confirm: () => void, dataIndex: string) => {
         confirm();
         this.setState({
             searchText: selectedKeys[0],
@@ -86,7 +88,7 @@ export class Characters extends React.Component<CharactersProps> {
         });
     };
 
-    handleReset = clearFilters => {
+    handleReset = (clearFilters: () => void) => {
         clearFilters();
         this.setState({ searchText: "" });
     };
@@ -94,7 +96,7 @@ export class Characters extends React.Component<CharactersProps> {
     render() {
         let { charactersList, columns, baseEventHandler } = this.props;
 
-        columns = columns.map(col => {
+        columns = columns.map((col: { dataIndex: string }) => {
             return {
                 ...col,
                 ...this.getColumnSearchProps(col.dataIndex)
@@ -105,7 +107,7 @@ export class Characters extends React.Component<CharactersProps> {
                 <Table
                     onRow={(record: any) => {
                         return {
-                            onClick: event => {
+                            onClick: (event: { preventDefault: () => void }) => {
                                 event.preventDefault();
                                 if (baseEventHandler) {
                                     baseEventHandler(record);

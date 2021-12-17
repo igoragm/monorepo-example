@@ -1,4 +1,5 @@
 import { FluxStandardAction } from "redux-promise-middleware";
+import { ICharactersState } from "../../interfaces/IApplicationState";
 import {
     GET_CHARACTERS_PENDING,
     GET_CHARACTERS_FULFILLED,
@@ -8,7 +9,7 @@ import {
     GET_CHARACTER_DETAILS_REJECTED
 } from "../actions/characters.actions";
 
-const initialState = {
+const initialState: ICharactersState = {
     characters: {
         isFetching: false,
         failed: false,

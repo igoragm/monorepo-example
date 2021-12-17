@@ -8,8 +8,7 @@ const endpoints = {
 export default class CharactersService extends BaseService<typeof endpoints> {
     endpoints = endpoints;
 
-    getCharacters(params: any) {
-        console.log(params);
+    getCharacters() {
         return this.get(this.endpoint("characters"));
     }
 

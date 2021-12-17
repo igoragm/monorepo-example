@@ -2,6 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Layout } from "antd";
 
+import ICharacter from "@monorepo/utils/src/types/ICharacter";
 import { getCharacters, getCharacterDetails } from "../../store/actions/characters.actions";
 import { Characters } from "../../components/characters/Characters";
 import CharacterDetail from "../../components/characterDetail/CharacterDetail";
@@ -32,14 +33,14 @@ const columns = [
         sortDirections: ["descend", "ascend"]
     }
 ];
-class Main extends React.Component<any, any> {
+class Main extends React.Component {
     state = {
-        charactersList: [] as any,
+        charactersList: [],
         characterDetails: undefined,
         selectedCharacter: ""
     };
 
-    async rowClick(record: any) {
+    async rowClick(record: { key: string }) {
         if (record.key === this.state.selectedCharacter) {
             return;
         }
@@ -51,7 +52,7 @@ class Main extends React.Component<any, any> {
     async componentDidMount() {
         await this.props.getCharacters();
         const { charactersList } = this.props;
-        const data = charactersList.data.map(character => {
+        const data = charactersList.data.map((character: ICharacter) => {
             return {
                 key: character.id,
                 family: character.family,

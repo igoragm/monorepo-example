@@ -1,9 +1,10 @@
 import * as React from "react";
 import styles from "./CharacterDetail.module.scss";
+import ICharacter from "@monorepo/utils/src/types/ICharacter";
 
-export type CharactersProps = { characterDetails: any };
+export type CharactersProps = { characterDetails: ICharacter };
 
-export default class CharacterDetail extends React.Component<CharactersProps, any> {
+export default class CharacterDetail extends React.Component<CharactersProps> {
     render() {
         const { characterDetails } = this.props;
         return (
