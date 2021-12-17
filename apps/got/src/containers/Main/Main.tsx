@@ -16,17 +16,20 @@ const columns = [
     {
         title: "Family",
         dataIndex: "family",
-        sorter: (a, b) => a.family.length - b.family.length
+        sorter: (a: { family: string }, b: { family: any }) => a.family.localeCompare(b.family),
+        sortDirections: ["descend", "ascend"]
     },
     {
         title: "Name",
         dataIndex: "fullName",
-        sorter: (a, b) => a.fullName.length - b.fullName.length
+        sorter: (a: { fullName: string }, b: { fullName: any }) => a.fullName > b.fullName,
+        sortDirections: ["descend", "ascend"]
     },
     {
         title: "Title",
         dataIndex: "title",
-        sorter: (a, b) => a.title.length - b.title.length
+        sorter: (a: { title: string }, b: { title: any }) => a.title.localeCompare(b.title),
+        sortDirections: ["descend", "ascend"]
     }
 ];
 class Main extends React.Component<any, any> {
