@@ -7,6 +7,5 @@ export const getCharacters = async (req: Request, res: Response): Promise<void> 
 };
 
 export const getCharacterDetails = async (req: Request, res: Response): Promise<void> => {
-    console.log(req);
     toJson(res, await fetchCharacterDetails(req.query.id as string));
 };
