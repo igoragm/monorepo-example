@@ -23,6 +23,9 @@
     "sass-loader": "^12.4.0",
     "webpack": "^5.65.0"
   },
+  "resolutions": {
+    "@types/react": "17.0.37"
+  },
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@types/history": "^4.7.9",
