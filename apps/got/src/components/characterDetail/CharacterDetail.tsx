@@ -1,4 +1,5 @@
 import * as React from "react";
+import styles from "./CharacterDetail.module.scss";
 
 export type CharactersProps = { characterDetails: any };
 
@@ -7,15 +8,17 @@ export default class CharacterDetail extends React.Component<CharactersProps, an
         const { characterDetails } = this.props;
         return (
             <div>
-                <h2>Character info</h2>
+                <div className={styles.titleContainer}>
+                    <h2 className={styles.title}>Character info</h2>
+                </div>
                 {characterDetails ? (
-                    <div>
-                        <img alt="" src={characterDetails.imageUrl} />
-                        <p>
+                    <div className={styles.charImgContainer}>
+                        <img alt="" className={styles.charImg} src={characterDetails.imageUrl} />
+                        <p className={styles.imgTextDesc}>
                             {characterDetails.title}: {characterDetails.fullName} of {characterDetails.family}
                         </p>
                         <div>
-                            <p>"{characterDetails.quote}"</p>
+                            <p className={styles.quoteText}>"{characterDetails.quote}"</p>
                             <p>
                                 - {characterDetails.title}, {characterDetails.fullName}
                             </p>

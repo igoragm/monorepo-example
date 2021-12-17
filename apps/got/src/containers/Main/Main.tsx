@@ -1,13 +1,16 @@
 import * as React from "react";
+import { connect } from "react-redux";
+import { Layout } from "antd";
+
+import { getCharacters, getCharacterDetails } from "../../store/actions/characters.actions";
 import { Characters } from "../../components/characters/Characters";
-import MainLayout from "../../components/layout/MainLayout";
 import CharacterDetail from "../../components/characterDetail/CharacterDetail";
 import styles from "./Main.module.scss";
-import { connect } from "react-redux";
-import { getCharacters, getCharacterDetails } from "../../store/actions/characters.actions";
 
 const mapDispatchToProps = { getCharacters, getCharacterDetails };
 const mapStateToProps = ({ characters, characterDetails }) => ({ charactersList: characters, characterDetails });
+
+const { Sider, Content } = Layout;
 
 const columns = [
     {
@@ -26,7 +29,6 @@ const columns = [
         sorter: (a, b) => a.title.length - b.title.length
     }
 ];
-
 class Main extends React.Component<any, any> {
     state = {
         charactersList: [] as any,
@@ -59,18 +61,21 @@ class Main extends React.Component<any, any> {
 
     render() {
         return (
-            <MainLayout>
-                <div className={styles.left}>
-                    <Characters
-                        charactersList={this.state.charactersList}
-                        columns={columns}
-                        baseEventHandler={this.rowClick.bind(this)}
-                    />
-                </div>
-                <div className={styles.right}>
+            <Layout>
+                <Sider className={styles.sidebar}>
+                    Character details
                     <CharacterDetail characterDetails={this.state.characterDetails} />
-                </div>
-            </MainLayout>
+                </Sider>
+                <Layout>
+                    <Content>
+                        <Characters
+                            charactersList={this.state.charactersList}
+                            columns={columns}
+                            baseEventHandler={this.rowClick.bind(this)}
+                        />
+                    </Content>
+                </Layout>
+            </Layout>
         );
     }
 }

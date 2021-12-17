@@ -1,15 +1,35 @@
-.container {
-    position: relative;
-    // overflow: hidden;
-    // min-height: 100vh;
-    // background-size: cover;
-    // background-position: 50% 50%;
-    // display: flex;
-    // justify-content: center;
-    // align-items: flex-start;
-    // width: 100%;
+.titleContainer {
+    text-align: center;
 }
 
-.test {
-    color: red;
+.title {
+    color: white;
+}
+
+.charImgContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.charImg {
+    max-width: 270px !important;
+    max-height: 246px !important;
+    object-fit: cover;
+}
+
+p {
+    color: beige;
+    margin: 5px;
+    padding: 5px;
+}
+
+.imgTextDesc {
+    font-weight: bold;
+}
+
+.quoteText {
+    float: right;
+    font-style: italic;
 }
