@@ -23,7 +23,7 @@ const columns = [
     {
         title: "Name",
         dataIndex: "fullName",
-        sorter: (a: { fullName: string }, b: { fullName: string }) => a.fullName > b.fullName,
+        sorter: (a: { fullName: string }, b: { fullName: string }) => a.fullName.localeCompare(b.fullName),
         sortDirections: ["descend", "ascend"]
     },
     {
