@@ -21,3 +21,7 @@ On the structure:
 -   start the react app with 'yarn dev'
 -   host
     http://localhost:4000/
+
+Update (18.12.2021)
+UI more or less complete
+Still need to prevent multiple same & unnecessary API calls (probably with Lodash-debounce)
