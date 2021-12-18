@@ -7,6 +7,7 @@ export type CharactersProps = {
     charactersList: any;
     columns: Object[];
     baseEventHandler: Function;
+    isLoading: boolean;
 };
 
 export class Characters extends React.Component<CharactersProps> {
@@ -94,7 +95,7 @@ export class Characters extends React.Component<CharactersProps> {
     };
 
     render() {
-        let { charactersList, columns, baseEventHandler } = this.props;
+        let { charactersList, columns, baseEventHandler, isLoading } = this.props;
 
         columns = columns.map((col: { dataIndex: string }) => {
             return {
@@ -117,6 +118,7 @@ export class Characters extends React.Component<CharactersProps> {
                     }}
                     columns={columns}
                     dataSource={charactersList}
+                    loading={isLoading}
                 />
             </div>
         );

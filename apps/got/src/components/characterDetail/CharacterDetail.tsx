@@ -1,18 +1,21 @@
 import * as React from "react";
+import { Spin } from "antd";
 import styles from "./CharacterDetail.module.scss";
 import ICharacter from "@monorepo/utils/src/types/ICharacter";
 
-export type CharactersProps = { characterDetails: ICharacter };
+export type CharactersProps = { characterDetails: ICharacter; isLoading: boolean };
 
 export default class CharacterDetail extends React.Component<CharactersProps> {
     render() {
-        const { characterDetails } = this.props;
+        const { characterDetails, isLoading } = this.props;
         return (
             <div>
                 <div className={styles.titleContainer}>
                     <h2 className={styles.title}>Character info</h2>
                 </div>
-                {characterDetails ? (
+                {isLoading ? (
+                    <Spin className={styles.loadingIndicator} size="large" />
+                ) : characterDetails ? (
                     <div className={styles.charImgContainer}>
                         <img alt="" className={styles.charImg} src={characterDetails.imageUrl} />
                         <p className={styles.imgTextDesc}>

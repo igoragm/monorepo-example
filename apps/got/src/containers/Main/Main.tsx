@@ -68,7 +68,10 @@ class Main extends React.Component {
             <Layout>
                 <Sider className={styles.sidebar}>
                     Character details
-                    <CharacterDetail characterDetails={this.state.characterDetails} />
+                    <CharacterDetail
+                        characterDetails={this.state.characterDetails}
+                        isLoading={this.props.characterDetails.isFetching}
+                    />
                 </Sider>
                 <Layout>
                     <Content>
@@ -76,6 +79,7 @@ class Main extends React.Component {
                             charactersList={this.state.charactersList}
                             columns={columns}
                             baseEventHandler={this.rowClick.bind(this)}
+                            isLoading={this.props.charactersList.isFetching}
                         />
                     </Content>
                 </Layout>
