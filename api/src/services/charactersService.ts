@@ -1,21 +1,23 @@
 import { CharactersRepository } from "../use_cases/characters/repositories/charactersRepository";
 import { ExternalService } from "../utils/externalService";
+import * as routes from "./routes";
 
 export class CharactersService implements CharactersRepository {
     constructor(private externalService: ExternalService) {}
 
-    public async fetchCharacters() {
-        const url = "https://thronesapi.com/api/v2/Characters";
-        const response = await this.externalService.get(url);
-        return response as any;
+    // No point in casting the return type to Character interface as I don't control the external API hence the return type of Promise<any>.
+    // Generating the backend/service types from Swagger and including them as a dependency is one way how to approach this
+    // https://biercoff.com/my-small-investigation-about-swagger-codegen-generation-in-typescript/
+    public async fetchCharacters(): Promise<any> {
+        const response = await this.externalService.get(routes.characters);
+        return response;
     }
 
-    public async fetchCharacterDetails(id: string) {
-        const url = `https://thronesapi.com/api/v2/Characters/${id}`;
-        const character = await this.externalService.get(url);
-        const randomQuote = await this.externalService.get("https://api.quotable.io/random");
+    public async fetchCharacterDetails(id: string): Promise<any> {
+        const character = await this.externalService.get(`${routes.characters}/${id}`);
+        const randomQuote = await this.externalService.get(routes.randomQuote);
 
         character.quote = randomQuote.content;
-        return character as any;
+        return character;
     }
 }

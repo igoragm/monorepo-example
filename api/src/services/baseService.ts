@@ -2,7 +2,7 @@ import { ExternalService } from "../utils/externalService";
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
 export class BaseService implements ExternalService {
-    public axios!: AxiosInstance;
+    private axios!: AxiosInstance;
 
     /**
      *
