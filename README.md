@@ -25,3 +25,4 @@ On the structure:
 Update (18.12.2021)
 UI more or less complete
 Still need to prevent multiple same & unnecessary API calls (probably with Lodash-debounce)
+Import statements acting funky (something about type declarations, need check)
