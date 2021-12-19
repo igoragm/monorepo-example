@@ -9,7 +9,7 @@ export default class CharacterDetail extends React.Component<CharactersProps> {
     render() {
         const { characterDetails, isLoading } = this.props;
         return (
-            <div data-cy="main-character-details">
+            <div className={styles.container} data-cy="main-character-details">
                 <div className={styles.titleContainer}>
                     <h2 className={styles.title}>Character info</h2>
                 </div>
