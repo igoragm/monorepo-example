@@ -94,6 +94,7 @@ export class Characters extends React.Component<CharactersProps> {
         return (
             <div>
                 <Table
+                    data-cy="characters-table"
                     onRow={(record: any) => {
                         return {
                             onClick: (event: { preventDefault: () => void }) => {

@@ -65,8 +65,8 @@ class Main extends React.Component {
 
     render() {
         return (
-            <Layout>
-                <Sider className={styles.sidebar}>
+            <Layout data-cy="main-layout">
+                <Sider data-cy="main-slider" className={styles.sidebar}>
                     Character details
                     <CharacterDetail
                         characterDetails={this.state.characterDetails}
