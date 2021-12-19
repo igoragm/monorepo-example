@@ -13,7 +13,8 @@
         "isolatedModules": false,
         "jsx": "react",
         "downlevelIteration": true,
-        "lib": ["es6", "dom", "dom.iterable", "ES2019"]
+        "lib": ["es6", "dom", "dom.iterable", "ES2019"],
+        "types": ["cypress"]
     },
     "exclude": ["./node_modules"],
     "include": ["./src", "../../libs/utils"]
