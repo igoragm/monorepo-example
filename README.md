@@ -2,7 +2,6 @@
 
 NOTES:
 
--   Work in progress!
 -   swapi.api is down! https://dev.to/fullstackchris/public-service-announcement-the-star-wars-api-swapi-co-is-down-3pdm,
     which is why I used https://anapioficeandfire.com/ to get Game of Thrones characters. In the initial phase the focus is on the architecture and as the project is still in WIP, I've still got some stuff to do, namely displaying character details (instead of Star Wars movie details), general styling & unit and integration testing.
 
