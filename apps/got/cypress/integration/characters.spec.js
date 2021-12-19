@@ -5,7 +5,6 @@ describe("characters", () => {
         cy.intercept("http://localhost:3030/characters/character?id=0", req => {
             req.continue(res => {
                 response = res;
-                console.log(response);
             });
         });
         cy.visit("/");
