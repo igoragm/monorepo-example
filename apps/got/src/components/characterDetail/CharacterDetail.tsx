@@ -17,12 +17,19 @@ export default class CharacterDetail extends React.Component<CharactersProps> {
                     <Spin className={styles.loadingIndicator} size="large" />
                 ) : characterDetails ? (
                     <div className={styles.charImgContainer}>
-                        <img alt="" className={styles.charImg} src={characterDetails.imageUrl} />
-                        <p className={styles.imgTextDesc}>
+                        <img
+                            data-cy="main-character-img"
+                            alt=""
+                            className={styles.charImg}
+                            src={characterDetails.imageUrl}
+                        />
+                        <p data-cy="main-character-desc" className={styles.imgTextDesc}>
                             {characterDetails.title}: {characterDetails.fullName} of {characterDetails.family}
                         </p>
                         <div>
-                            <p className={styles.quoteText}>"{characterDetails.quote}"</p>
+                            <p data-cy="main-character-quote" className={styles.quoteText}>
+                                "{characterDetails.quote}"
+                            </p>
                             <p>
                                 - {characterDetails.title}, {characterDetails.fullName}
                             </p>

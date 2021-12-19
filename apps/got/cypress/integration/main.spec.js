@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-describe("example to-do app", () => {
+describe("main", () => {
     it("displays two todo items by default", () => {
         cy.visit("/");
 
