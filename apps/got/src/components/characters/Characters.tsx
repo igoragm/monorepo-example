@@ -41,7 +41,7 @@ export class Characters extends React.Component<CharactersProps> {
                     >
                         Search
                     </Button>
-                    <Button onClick={() => this.handleReset(clearFilters)} size="small" style={{ width: 90 }}>
+                    <Button onClick={() => this.handleReset(clearFilters, confirm)} size="small" style={{ width: 90 }}>
                         Reset
                     </Button>
                     <Button
@@ -89,9 +89,10 @@ export class Characters extends React.Component<CharactersProps> {
         });
     };
 
-    handleReset = (clearFilters: () => void) => {
+    handleReset = (clearFilters: () => void, confirm: () => void) => {
         clearFilters();
-        this.setState({ searchText: "" });
+        confirm();
+        this.setState({ searchText: "", searchedColumn: "" });
     };
 
     render() {
