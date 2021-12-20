@@ -67,7 +67,6 @@ class Main extends React.Component {
         return (
             <Layout data-cy="main-layout">
                 <Sider data-cy="main-slider" className={styles.sidebar}>
-                    Character details
                     <CharacterDetail
                         characterDetails={this.state.characterDetails}
                         isLoading={this.props.characterDetails.isFetching}
