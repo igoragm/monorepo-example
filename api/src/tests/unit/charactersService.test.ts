@@ -19,13 +19,13 @@ describe("Character service", () => {
     it("should fetch all GoT characters", async () => {
         charsService.fetchCharacters();
         const spy = jest.spyOn(Reflect.get(baseService, "axios"), "get");
-        expect(spy).toHaveBeenLastCalledWith(routes.characters, {});
+        expect(spy).toHaveBeenCalledWith(routes.characters, {});
     });
 
     it("should fetch a GoT character", async () => {
         const id = "7";
         charsService.fetchCharacterDetails(id);
         const spy = jest.spyOn(Reflect.get(baseService, "axios"), "get");
-        expect(spy).toHaveBeenLastCalledWith(`${routes.characters}/${id}`, {});
+        expect(spy).toHaveBeenCalledWith(`${routes.characters}/${id}`, {});
     });
 });
