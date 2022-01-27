@@ -1,14 +1,5 @@
 # monorepo-example
 
-NOTES:
-
--   swapi.api is down! https://dev.to/fullstackchris/public-service-announcement-the-star-wars-api-swapi-co-is-down-3pdm,
-    which is why I used https://anapioficeandfire.com/ to get Game of Thrones characters. In the initial phase the focus is on the architecture and as the project is still in WIP, I've still got some stuff to do, namely displaying character details (instead of Star Wars movie details), general styling & unit and integration testing.
-
-On the structure:
-
--   I've decided to go with a small server running as a proxy between the React app and the external API (anapioficeandfire.com). I find this to be a good approach when I'm communicating with 3rd party API's and I like the overall structure as it's nicely separated and the frontend remains clutter free.
-
 -   In the root of the repository execute 'yarn lerna:clean:install' and after that:
 
     Root api/:
@@ -20,8 +11,3 @@ On the structure:
 -   start the react app with 'yarn dev'
 -   host
     http://localhost:4000/
-
-Update (18.12.2021)
-UI more or less complete
-Still need to prevent multiple same & unnecessary API calls (probably with Lodash-debounce)
-Import statements acting funky (something about type declarations, need to check in more details) - the editor is giving out import errors but everything works
