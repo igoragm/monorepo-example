@@ -10,6 +10,7 @@
     "lerna:clean:install": "npx lerna clean --yes && rm -rf node_modules && npx lerna bootstrap --force-local"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.5",
     "@babel/plugin-proposal-class-properties": "^7.16.5",
     "@babel/plugin-proposal-decorators": "^7.16.5",
     "@babel/plugin-proposal-optional-chaining": "^7.16.5",
@@ -19,7 +20,6 @@
     "@types/babel__core": "^7.1.17",
     "@types/express": "^4.17.11",
     "@types/jest": "^27.0.3",
-    "@babel/core": "^7.16.5",
     "@types/qs": "^6.9.7",
     "axios": "^0.24.0",
     "babel-eslint": "^10.1.0",
@@ -29,6 +29,7 @@
     "babel-preset-react-app": "^10.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "lodash": "^4.17.21",
     "jest": "^27.4.5",
     "lerna": "^4.0.0",
     "prettier": "^2.5.1",

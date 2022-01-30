@@ -1,4 +1,5 @@
 import * as React from "react";
+import debounce from "lodash.debounce";
 import { Table, Input, Button, Space } from "antd";
 import Highlighter from "react-highlight-words";
 import { SearchOutlined } from "@ant-design/icons";
@@ -85,12 +86,15 @@ export class Characters extends React.Component<CharactersProps> {
     render() {
         let { charactersList, columns, baseEventHandler, isLoading } = this.props;
 
-        columns = columns.map((col: { dataIndex: string }) => {
+        columns = columns.map((col: any) => {
             return {
                 ...col,
                 ...this.getColumnSearchProps(col.dataIndex)
             };
         });
+
+        const debouncedEventHandler = debounce((record: any) => baseEventHandler(record), 500);
+
         return (
             <div>
                 <Table
@@ -100,7 +104,7 @@ export class Characters extends React.Component<CharactersProps> {
                             onClick: (event: { preventDefault: () => void }) => {
                                 event.preventDefault();
                                 if (baseEventHandler) {
-                                    baseEventHandler(record);
+                                    debouncedEventHandler(record);
                                 }
                             }
                         };
