@@ -4,4 +4,5 @@ export default interface ICharacter {
     fullName: string;
     title: string;
     imageUrl: string;
+    quote: string;
 }

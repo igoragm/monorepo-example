@@ -8,6 +8,13 @@ import { Characters } from "../../components/characters/Characters";
 import CharacterDetail from "../../components/characterDetail/CharacterDetail";
 import styles from "./Main.module.scss";
 
+interface IMain {
+    getCharacterDetails(key: string): Object;
+    characterDetails: any;
+    getCharacters: Function;
+    charactersList: any;
+}
+
 const mapDispatchToProps = { getCharacters, getCharacterDetails };
 const mapStateToProps = ({ characters, characterDetails }) => ({ charactersList: characters, characterDetails });
 
@@ -33,10 +40,10 @@ const columns = [
         sortDirections: ["descend", "ascend"]
     }
 ];
-class Main extends React.Component {
+class Main extends React.Component<IMain> {
     state = {
         charactersList: [],
-        characterDetails: undefined,
+        characterDetails: [] as unknown as ICharacter,
         selectedCharacter: ""
     };
 
