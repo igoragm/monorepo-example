@@ -17,6 +17,8 @@ export class Characters extends React.Component<CharactersProps> {
         searchedColumn: ""
     };
 
+    searchInput: any;
+
     getColumnSearchProps = (dataIndex: string) => ({
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
             <div style={{ padding: 8 }}>
