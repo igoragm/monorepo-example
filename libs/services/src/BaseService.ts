@@ -1,5 +1,5 @@
 import { axiosApi } from "@monorepo/utils/src/axiosApi";
-import { Axios, AxiosRequestConfig } from "axios";
+import { Axios } from "axios";
 
 interface ServiceEndpoints {
     [key: string]: string;
