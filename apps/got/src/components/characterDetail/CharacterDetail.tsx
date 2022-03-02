@@ -15,7 +15,7 @@ export default class CharacterDetail extends React.Component<CharactersProps> {
                 </div>
                 {isLoading ? (
                     <Spin className={styles.loadingIndicator} size="large" />
-                ) : characterDetails ? (
+                ) : characterDetails.id ? (
                     <div className={styles.charImgContainer}>
                         <img
                             data-cy="main-character-img"
