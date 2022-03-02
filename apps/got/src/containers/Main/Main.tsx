@@ -4,7 +4,7 @@ import { Layout } from "antd";
 
 import ICharacter from "@monorepo/utils/src/types/ICharacter";
 import { getCharacters, getCharacterDetails } from "../../store/actions/characters.actions";
-import { Characters } from "../../components/characters/Characters";
+import Characters from "../../components/characters/Characters";
 import CharacterDetail from "../../components/characterDetail/CharacterDetail";
 import styles from "./Main.module.scss";
 
